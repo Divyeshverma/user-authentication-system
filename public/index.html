@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Authentication System</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="intro">
+        <div class="intro-content">
+          <p class="eyebrow">MERN Stack Project</p>
+          <h1>User Authentication System</h1>
+          <p class="intro-copy">
+            Register, verify OTP, login, view profile details, and reset forgotten passwords with a secure MongoDB-backed flow.
+          </p>
+        </div>
+        <div class="feature-list" aria-label="Project features">
+          <span>Email OTP verification</span>
+          <span>JWT protected login</span>
+          <span>User profile dashboard</span>
+          <span>Forgot password reset</span>
+        </div>
+      </section>
+
+      <section class="auth-panel">
+        <div class="brand">
+          <p id="formEyebrow">Create Account</p>
+          <h2 id="formTitle">Start with registration</h2>
+          <span id="formHint">After registration, copy the OTP from your server terminal and verify your email.</span>
+        </div>
+
+        <nav class="tabs" aria-label="Authentication views">
+          <button class="tab active" data-view="register">Register</button>
+          <button class="tab" data-view="verify">Verify OTP</button>
+          <button class="tab" data-view="login">Login</button>
+          <button class="tab" data-view="forgot">Forgot</button>
+        </nav>
+
+        <form class="view active" id="registerView">
+          <div class="grid">
+            <label>
+              Name
+              <input name="name" placeholder="Your full name" required />
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" placeholder="you@example.com" required />
+            </label>
+            <label>
+              Password
+              <input name="password" type="password" placeholder="Create password" required />
+            </label>
+            <label>
+              Mobile
+              <input name="mobile" placeholder="Mobile number" required />
+            </label>
+            <label>
+              Gender
+              <select name="gender" required>
+                <option value="">Select</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label>
+              State
+              <input name="state" placeholder="State" required />
+            </label>
+            <label>
+              Pin code
+              <input name="pinCode" placeholder="Pin code" required />
+            </label>
+          </div>
+          <button type="submit"><span class="button-text">Create Account</span></button>
+        </form>
+
+        <form class="view" id="verifyView">
+          <label>
+            Email
+            <input name="email" type="email" placeholder="Registered email" required />
+          </label>
+          <label>
+            OTP
+            <input name="otp" inputmode="numeric" maxlength="6" placeholder="6 digit OTP" required />
+          </label>
+          <button type="submit"><span class="button-text">Verify Email</span></button>
+        </form>
+
+        <form class="view" id="loginView">
+          <label>
+            Email
+            <input name="email" type="email" placeholder="Registered email" required />
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" placeholder="Password" required />
+          </label>
+          <button type="submit"><span class="button-text">Login</span></button>
+        </form>
+
+        <form class="view" id="forgotView">
+          <label>
+            Email
+            <input name="email" type="email" placeholder="Registered email" required />
+          </label>
+          <button type="button" id="sendResetOtp"><span class="button-text">Send Reset OTP</span></button>
+          <label>
+            OTP
+            <input name="otp" inputmode="numeric" maxlength="6" placeholder="Reset OTP" />
+          </label>
+          <label>
+            New Password
+            <input name="newPassword" type="password" placeholder="New password" />
+          </label>
+          <button type="submit"><span class="button-text">Reset Password</span></button>
+        </form>
+
+        <p class="message" id="message" role="status"></p>
+      </section>
+
+      <section class="dashboard" id="dashboard" hidden>
+        <div class="dashboard-head">
+          <div>
+            <p>Logged in</p>
+            <h2 id="profileName">Dashboard</h2>
+          </div>
+          <button id="logoutBtn" type="button">Logout</button>
+        </div>
+        <dl id="profileDetails"></dl>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
