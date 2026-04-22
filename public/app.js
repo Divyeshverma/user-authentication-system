@@ -13,12 +13,12 @@ const viewCopy = {
   register: {
     eyebrow: "Create Account",
     title: "Start with registration",
-    hint: "After registration, copy the OTP from your server terminal and verify your email.",
+    hint: "After registration, check your email for the OTP and verify your account.",
   },
   verify: {
     eyebrow: "Email OTP",
     title: "Verify your email",
-    hint: "Use the 6 digit OTP printed in the backend terminal after registration.",
+    hint: "Use the 6 digit OTP sent to your email. You can request a new OTP if needed.",
   },
   login: {
     eyebrow: "Welcome Back",
@@ -147,6 +147,21 @@ views.verify.addEventListener("submit", async (event) => {
     showMessage(data.message);
     switchView("login");
     views.login.email.value = event.currentTarget.email.value;
+  } catch (error) {
+    showMessage(error.message, true);
+  }
+});
+
+document.querySelector("#resendOtp").addEventListener("click", async () => {
+  const button = document.querySelector("#resendOtp");
+  try {
+    const data = await withLoading(button, () =>
+      request("/api/resend-verification-otp", {
+        method: "POST",
+        body: JSON.stringify({ email: views.verify.email.value }),
+      })
+    );
+    showMessage(data.message);
   } catch (error) {
     showMessage(error.message, true);
   }

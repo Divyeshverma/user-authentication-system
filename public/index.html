@@ -28,7 +28,7 @@
         <div class="brand">
           <p id="formEyebrow">Create Account</p>
           <h2 id="formTitle">Start with registration</h2>
-          <span id="formHint">After registration, copy the OTP from your server terminal and verify your email.</span>
+          <span id="formHint">After registration, check your email for the OTP and verify your account.</span>
         </div>
 
         <nav class="tabs" aria-label="Authentication views">
@@ -87,6 +87,7 @@
             <input name="otp" inputmode="numeric" maxlength="6" placeholder="6 digit OTP" required />
           </label>
           <button type="submit"><span class="button-text">Verify Email</span></button>
+          <button type="button" class="secondary-action" id="resendOtp"><span class="button-text">Resend OTP</span></button>
         </form>
 
         <form class="view" id="loginView">
